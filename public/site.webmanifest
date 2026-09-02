@@ -1,0 +1,14 @@
+{
+  "name": "Therapy & You — A gentle private journal",
+  "short_name": "Therapy & You",
+  "description": "A warm, private journal that reads your words with care and reflects your feelings back to you.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFCFC",
+  "theme_color": "#2E3192",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
