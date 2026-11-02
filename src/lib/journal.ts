@@ -33,27 +33,131 @@ export const EMOTION_META: Record<
 };
 
 const EMOTION_LEXICON: Record<EmotionKey, string[]> = {
-  calm: ["calm", "quiet", "still", "slow", "peace", "breathe", "gentle", "soft", "rest", "settled", "ease"],
-  grateful: ["grateful", "thankful", "lucky", "appreciate", "gift", "warm", "kind", "love", "grace"],
-  hopeful: ["hope", "maybe", "better", "tomorrow", "forward", "try", "start", "possible", "light", "excited"],
-  tender: ["miss", "tender", "cry", "soft spot", "hug", "forgive", "sorry", "sweet", "ache", "care"],
-  anxious: ["anxious", "worry", "worried", "nervous", "panic", "spiral", "overthink", "stress", "afraid", "tight", "racing"],
-  heavy: ["heavy", "sad", "empty", "hard", "lonely", "grey", "gray", "low", "hurt", "stuck", "too much"],
+  calm: [
+    "calm",
+    "quiet",
+    "still",
+    "slow",
+    "peace",
+    "breathe",
+    "gentle",
+    "soft",
+    "rest",
+    "settled",
+    "ease",
+  ],
+  grateful: [
+    "grateful",
+    "thankful",
+    "lucky",
+    "appreciate",
+    "gift",
+    "warm",
+    "kind",
+    "love",
+    "grace",
+  ],
+  hopeful: [
+    "hope",
+    "maybe",
+    "better",
+    "tomorrow",
+    "forward",
+    "try",
+    "start",
+    "possible",
+    "light",
+    "excited",
+  ],
+  tender: [
+    "miss",
+    "tender",
+    "cry",
+    "soft spot",
+    "hug",
+    "forgive",
+    "sorry",
+    "sweet",
+    "ache",
+    "care",
+  ],
+  anxious: [
+    "anxious",
+    "worry",
+    "worried",
+    "nervous",
+    "panic",
+    "spiral",
+    "overthink",
+    "stress",
+    "afraid",
+    "tight",
+    "racing",
+  ],
+  heavy: [
+    "heavy",
+    "sad",
+    "empty",
+    "hard",
+    "lonely",
+    "grey",
+    "gray",
+    "low",
+    "hurt",
+    "stuck",
+    "too much",
+  ],
   tired: ["tired", "exhausted", "drained", "sleep", "burnt", "no energy", "worn", "late", "foggy"],
 };
 
 const POSITIVE = [
-  "good", "better", "happy", "joy", "warm", "love", "kind", "calm", "grateful", "hope",
-  "proud", "laugh", "smile", "gentle", "rest", "enough", "light", "soft", "helped", "ease",
+  "good",
+  "better",
+  "happy",
+  "joy",
+  "warm",
+  "love",
+  "kind",
+  "calm",
+  "grateful",
+  "hope",
+  "proud",
+  "laugh",
+  "smile",
+  "gentle",
+  "rest",
+  "enough",
+  "light",
+  "soft",
+  "helped",
+  "ease",
 ];
 
 const NEGATIVE = [
-  "bad", "worse", "sad", "angry", "afraid", "anxious", "worry", "tired", "heavy", "hurt",
-  "lonely", "stuck", "hate", "guilt", "shame", "panic", "cried", "empty", "stress", "tight",
+  "bad",
+  "worse",
+  "sad",
+  "angry",
+  "afraid",
+  "anxious",
+  "worry",
+  "tired",
+  "heavy",
+  "hurt",
+  "lonely",
+  "stuck",
+  "hate",
+  "guilt",
+  "shame",
+  "panic",
+  "cried",
+  "empty",
+  "stress",
+  "tight",
 ];
 
 const STOPWORDS = new Set(
-  ("i me my myself we our you your he him his she her it its they them the a an and or but if then than that this these those of to in on at for with from by as is am are was were be been being do does did doing have has had having so just really very much more most some any all not no nor own same too can will would should could about after again before because there here when what which who whom how out up down over under only other into your yours").split(
+  "i me my myself we our you your he him his she her it its they them the a an and or but if then than that this these those of to in on at for with from by as is am are was were be been being do does did doing have has had having so just really very much more most some any all not no nor own same too can will would should could about after again before because there here when what which who whom how out up down over under only other into your yours".split(
     " ",
   ),
 );
@@ -113,7 +217,13 @@ export function analyze(body: string): {
     .slice(0, 6)
     .map(([w]) => w);
 
-  return { sentiment, emotions, keywords, insight: buildInsight(sentiment, emotions, wordCount), wordCount };
+  return {
+    sentiment,
+    emotions,
+    keywords,
+    insight: buildInsight(sentiment, emotions, wordCount),
+    wordCount,
+  };
 }
 
 function buildInsight(
@@ -129,7 +239,9 @@ function buildInsight(
 
   if (top === "anxious" || top === "heavy") {
     return `There's real weight in this one, and you still showed up to write it down — that matters. ${
-      second ? `A thread of ${EMOTION_META[second].label.toLowerCase()} runs underneath it too. ` : ""
+      second
+        ? `A thread of ${EMOTION_META[second].label.toLowerCase()} runs underneath it too. `
+        : ""
     }Be as kind to yourself tonight as you'd be to a friend.`;
   }
   if (top === "tired") {
@@ -141,8 +253,10 @@ function buildInsight(
   if (top === "calm") {
     return "This entry moves slowly, in a good way. Whatever you did to get here, it's worth doing again.";
   }
-  if (sentiment > 0.15) return "The tone here leans gently upward. Something is working — see if you can name it.";
-  if (sentiment < -0.15) return "This reads tender and unresolved. You don't have to fix it today; you just had to say it.";
+  if (sentiment > 0.15)
+    return "The tone here leans gently upward. Something is working — see if you can name it.";
+  if (sentiment < -0.15)
+    return "This reads tender and unresolved. You don't have to fix it today; you just had to say it.";
   return "Mixed and honest — two feelings can be true at once. Naming them is already the work.";
 }
 

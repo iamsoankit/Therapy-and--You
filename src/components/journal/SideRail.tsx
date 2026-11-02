@@ -30,7 +30,13 @@ function Icon({ path }: { path: string }) {
   );
 }
 
-export function SideRail({ active, onNavigate }: { active: string; onNavigate: (id: string) => void }) {
+export function SideRail({
+  active,
+  onNavigate,
+}: {
+  active: string;
+  onNavigate: (id: string) => void;
+}) {
   return (
     <nav
       aria-label="Sections"
@@ -59,9 +65,7 @@ export function SideRail({ active, onNavigate }: { active: string; onNavigate: (
               aria-label={item.label}
               aria-current={on ? "true" : undefined}
               className={`rounded-xl p-3 transition-all duration-300 hover:-translate-y-0.5 ${
-                on
-                  ? "bg-clay/10 text-clay"
-                  : "text-ink-soft hover:bg-secondary hover:text-ink"
+                on ? "bg-clay/10 text-clay" : "text-ink-soft hover:bg-secondary hover:text-ink"
               }`}
             >
               <Icon path={item.path} />
