@@ -15,16 +15,7 @@ import {
   saveName,
   type Entry,
 } from "@/lib/journal";
-import {
-  DEFAULT_PREFS,
-  GOALS,
-  intention,
-  loadPrefs,
-  savePrefs,
-  type Prefs,
-} from "@/lib/prefs";
-
-
+import { DEFAULT_PREFS, GOALS, intention, loadPrefs, savePrefs, type Prefs } from "@/lib/prefs";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -70,7 +61,6 @@ function Index() {
     setHydrated(true);
   }, []);
 
-
   useEffect(() => {
     if (hydrated) saveEntries(entries);
   }, [entries, hydrated]);
@@ -102,7 +92,11 @@ function Index() {
   function navigate(id: string) {
     setActive(id);
     const target =
-      id === "entries" ? entriesRef.current : id === "insights" ? insightsRef.current : writeRef.current;
+      id === "entries"
+        ? entriesRef.current
+        : id === "insights"
+          ? insightsRef.current
+          : writeRef.current;
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -172,9 +166,7 @@ function Index() {
             </button>
             <ThemeToggle />
           </div>
-
         </div>
-
 
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
           <div className="min-w-0 space-y-8">
@@ -194,7 +186,6 @@ function Index() {
               <div className={blurEntries ? "privacy-veil" : undefined}>
                 <EntryTimeline entries={entries} onDelete={handleDelete} />
               </div>
-
             </section>
           </div>
 

@@ -5,12 +5,20 @@ import { CHIP_TONE } from "./tone";
 function when(iso: string) {
   const d = new Date(iso);
   const today = new Date();
-  const diff = Math.round((today.setHours(0, 0, 0, 0) - new Date(iso).setHours(0, 0, 0, 0)) / 86400000);
+  const diff = Math.round(
+    (today.setHours(0, 0, 0, 0) - new Date(iso).setHours(0, 0, 0, 0)) / 86400000,
+  );
   const label = diff === 0 ? "Today" : diff === 1 ? "Yesterday" : `${diff} days ago`;
   return `${label}, ${d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}`;
 }
 
-export function EntryTimeline({ entries, onDelete }: { entries: Entry[]; onDelete: (id: string) => void }) {
+export function EntryTimeline({
+  entries,
+  onDelete,
+}: {
+  entries: Entry[];
+  onDelete: (id: string) => void;
+}) {
   const [openId, setOpenId] = useState<string | null>(null);
 
   if (!entries.length) {
@@ -89,7 +97,9 @@ export function EntryTimeline({ entries, onDelete }: { entries: Entry[]; onDelet
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-clay">
                     What Sprout noticed
                   </p>
-                  <p className="mt-2 text-[15px] leading-relaxed text-ink/90 text-pretty">{entry.insight}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink/90 text-pretty">
+                    {entry.insight}
+                  </p>
                 </div>
 
                 <div className="flex items-center justify-between">

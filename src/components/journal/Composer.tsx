@@ -83,7 +83,9 @@ export function Composer({ onSave }: Props) {
             : `${live.wordCount} ${live.wordCount === 1 ? "word" : "words"} · saved only for you`}
         </p>
         <div className="flex items-center gap-3">
-          {justSaved && <span className="animate-pop text-sm font-bold text-moss">Kept safe 🌿</span>}
+          {justSaved && (
+            <span className="animate-pop text-sm font-bold text-moss">Kept safe 🌿</span>
+          )}
           <button
             type="button"
             onClick={handleSave}

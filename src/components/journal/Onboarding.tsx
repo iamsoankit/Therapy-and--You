@@ -98,8 +98,8 @@ export function Onboarding({
           {step === 0 && (
             <div className="space-y-5">
               <p className="text-[15px] leading-relaxed text-ink-soft">
-                Four quick questions — under a minute. It shapes your prompts, your insight
-                cards and how much the app keeps to itself. You can change all of it later.
+                Four quick questions — under a minute. It shapes your prompts, your insight cards
+                and how much the app keeps to itself. You can change all of it later.
               </p>
               <label className="block">
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-ink-soft">
@@ -155,7 +155,9 @@ export function Onboarding({
                     className={`${cardBase} ${on ? cardOn : cardOff}`}
                   >
                     <span className="text-lg">{g.emoji}</span>
-                    <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight">{g.label}</p>
+                    <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight">
+                      {g.label}
+                    </p>
                     <p className="mt-0.5 text-xs text-ink-soft">{g.hint}</p>
                   </button>
                 );
@@ -211,7 +213,9 @@ export function Onboarding({
                     className={`${cardBase} ${on ? cardOn : cardOff}`}
                   >
                     <span className="text-lg">{o.emoji}</span>
-                    <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight">{o.label}</p>
+                    <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight">
+                      {o.label}
+                    </p>
                     <p className="mt-0.5 text-xs text-ink-soft">{o.hint}</p>
                   </button>
                 );
